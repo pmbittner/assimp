@@ -59,7 +59,7 @@ PROJECT( Assimp VERSION 5.0.1 )
 
 OPTION( BUILD_SHARED_LIBS
   "Build package with shared libraries."
-  ON
+  OFF
 )
 OPTION( ASSIMP_BUILD_FRAMEWORK
   "Build package as Mac OS X Framework bundle."
@@ -83,11 +83,11 @@ OPTION( ASSIMP_NO_EXPORT
 )
 OPTION( ASSIMP_BUILD_ZLIB
   "Build your own zlib"
-  OFF
+  ON
 )
 OPTION( ASSIMP_BUILD_ASSIMP_TOOLS
   "If the supplementary tools for Assimp are built in addition to the library."
-  ON
+  OFF
 )
 OPTION ( ASSIMP_BUILD_SAMPLES
   "If the official samples are built as well (needs Glut)."
@@ -95,7 +95,7 @@ OPTION ( ASSIMP_BUILD_SAMPLES
 )
 OPTION ( ASSIMP_BUILD_TESTS
   "If the test suite for Assimp is built in addition to the library."
-  ON
+  OFF
 )
 OPTION ( ASSIMP_COVERALLS
   "Enable this to measure test coverage."
@@ -103,7 +103,7 @@ OPTION ( ASSIMP_COVERALLS
 )
 OPTION( ASSIMP_INSTALL
   "Disable this if you want to use assimp as a submodule."
-  ON
+  OFF
 )
 OPTION ( ASSIMP_ERROR_MAX
   "Enable all warnings."
@@ -261,7 +261,7 @@ ELSEIF(MSVC)
   IF(CMAKE_CXX_COMPILER_ID MATCHES "Clang" ) # clang-cl
     ADD_COMPILE_OPTIONS(/bigobj /W4 /WX )
   ELSE() # msvc
-    ADD_COMPILE_OPTIONS(/MP /bigobj /W4 /WX)
+    ADD_COMPILE_OPTIONS(/MP /MT /bigobj /W4 /WX)
   ENDIF()
   # disable "elements of array '' will be default initialized" warning on MSVC2013
   IF(MSVC12)
